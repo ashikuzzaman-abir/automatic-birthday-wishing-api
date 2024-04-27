@@ -1,0 +1,12 @@
+GET http://localhost:5000/
+
+###
+POST http://localhost:5000/api/users
+Content-Type: application/json
+
+{
+    "name": "John Doe",
+    "email": "john@gmail.com",
+    "password": "11223344",
+    "dateOfBirth": "1990-01-01"
+}
