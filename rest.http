@@ -5,12 +5,15 @@ POST http://localhost:5000/api/users
 Content-Type: application/json
 
 {
-    "name": "John Doe",
-    "email": "abir@gmail.com",
+    "name": "Ashik Abir",
+    "email": "ashikabir.thinkcrypt@gmail.com",
     "password": "11223344",
-    "dateOfBirth": "1999-04-28"
+    "dateOfBirth": "2024-4-28"
 }
 
 ###
 
 GET http://localhost:5000/api/users
+
+###
+DELETE http://localhost:5000/api/users/662dca550d97c9d2d3b5c8f2

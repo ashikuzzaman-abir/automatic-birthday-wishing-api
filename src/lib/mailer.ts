@@ -30,7 +30,7 @@ const sendEmail = async (
       from: MAIL_ADDRESS,
       to,
       subject,
-      text,
+      html:text,
     };
 
     // Send the email

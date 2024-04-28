@@ -1,5 +1,7 @@
-import express from 'express';
 import dotenv from 'dotenv';
+dotenv.config();
+
+import express from 'express';
 import cors from 'cors';
 import morgan from 'morgan';
 import helmet from 'helmet';
@@ -9,13 +11,13 @@ import cron from 'node-cron';
 
 import userRoutes from './routes/user.route';
 import {
-  EVERY_SECONDS_SCHEDULER,
-  MIDNIGHT_SCHEDULER,
+  PORT as PORT_CONFIG,
+  SCHEDULER_OPTIONS,
+  SELECTED_TIMER,
 } from './config/main.config';
 import { sendBirthdayMessage } from './lib/scheduler';
 
-dotenv.config();
-const PORT = process.env.PORT || 5000;
+const PORT = PORT_CONFIG;
 
 const app = express();
 
@@ -27,7 +29,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(morgan('dev'));
 
-cron.schedule(EVERY_SECONDS_SCHEDULER, sendBirthdayMessage);
+cron.schedule(SELECTED_TIMER, sendBirthdayMessage, SCHEDULER_OPTIONS);
+// console.log();
 
 app.get('/', (req, res) => {
   res.json({ message: 'Welcome to the server' });

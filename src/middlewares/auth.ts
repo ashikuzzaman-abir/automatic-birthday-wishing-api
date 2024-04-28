@@ -1,6 +1,7 @@
 import jwt from 'jsonwebtoken';
 import User from '../models/user.model.js';
 import { Request, Response, NextFunction } from 'express';
+import { JWT_PRIVATE_KEY } from '../config/main.config.js';
 
 type IRequest = Request & {
   user?: any;
@@ -13,10 +14,7 @@ export function authfunction(req: IRequest, res: Response, next: NextFunction) {
   if (!token) return res.status(401).send('Access denied. No token present');
 
   try {
-    const decoded = jwt.verify(
-      token,
-      process.env.JWT_PRIVATE_KEY || 'fallback_key_12345_924542'
-    );
+    const decoded = jwt.verify(token, JWT_PRIVATE_KEY);
     req.user = decoded;
     next();
   } catch (ex: any) {
@@ -28,10 +26,7 @@ type IUser = {
   _id: string;
   name: string;
   email: string;
-  role: string;
-  permissions: string[];
-  organisation: string;
-  sysUser: boolean;
+  dateOfBirth: Date;
 };
 
 export const protect = async (
@@ -47,14 +42,8 @@ export const protect = async (
   ) {
     try {
       token = req.headers.authorization.split(' ')[1];
-      const decoded = jwt.verify(
-        token,
-        process.env.JWT_PRIVATE_KEY || 'fallback_key_12345_924542'
-      ) as IUser;
-      req.user = await User.findById(decoded?._id)
-        .select('-password')
-        .populate('role');
-      req.permissions = req?.user?.role?.permissions;
+      const decoded = jwt.verify(token, JWT_PRIVATE_KEY) as IUser;
+      req.user = await User.findById(decoded?._id).select('-password');
       next();
     } catch (error: any) {
       console.error(error);
