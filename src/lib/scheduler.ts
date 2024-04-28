@@ -1,20 +1,24 @@
-import scheduler from 'node-schedule'
+import moment from 'moment';
+import User from '../models/user.model';
+// import sendEmail from './mailer';
+import mimicMailer from './mimicMailer';
+import generateMainBody from './generateMailBody';
 
-export default class Scheduler {
-  private static instance: Scheduler
-  private constructor() {}
+export const sendBirthdayMessage = async () => {
+  try {
+    const today = moment().startOf('day');
 
-  public static getInstance(): Scheduler {
-    if (!Scheduler.instance) {
-      Scheduler.instance = new Scheduler()
-    }
-    return Scheduler.instance
+    const users = await User.find().select('-password');
+    const usersWhoHasBirthdayToday = users.filter((user) => {
+      const dob = moment(user.dateOfBirth);
+      return dob.date() === today.date() && dob.month() === today.month();
+    });
+
+    usersWhoHasBirthdayToday.forEach((user) => {
+      mimicMailer(user.email, 'Happy Birthday', generateMainBody(user.name));
+    });
+    // console.log(usersWhoHasBirthdayToday);
+  } catch (error) {
+    console.log(error.stack);
   }
-
-  public scheduleJob(
-    rule: string | scheduler.RecurrenceRule | scheduler.RecurrenceSpecDateRange,
-    callback: () => void
-  ): scheduler.Job {
-    return scheduler.scheduleJob(rule, callback)
-  }
-}
+};

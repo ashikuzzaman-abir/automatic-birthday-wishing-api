@@ -6,7 +6,11 @@ Content-Type: application/json
 
 {
     "name": "John Doe",
-    "email": "john@gmail.com",
+    "email": "abir@gmail.com",
     "password": "11223344",
-    "dateOfBirth": "1990-01-01"
+    "dateOfBirth": "1999-04-28"
 }
+
+###
+
+GET http://localhost:5000/api/users
