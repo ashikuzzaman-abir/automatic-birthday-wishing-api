@@ -30,7 +30,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(morgan('dev'));
 
 cron.schedule(SELECTED_TIMER, sendBirthdayMessage, SCHEDULER_OPTIONS);
-// console.log();
+// console.log(process.argv[3]);
 
 app.get('/', (req, res) => {
   res.json({ message: 'Welcome to the server' });

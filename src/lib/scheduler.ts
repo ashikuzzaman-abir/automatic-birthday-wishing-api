@@ -19,7 +19,10 @@ export const sendBirthdayMessage = async () => {
         'Happy Birthday',
         generateMainBody(user.name, user.dateOfBirth)
       );
-      if (process.argv[6] === 'with-mailer') {
+      if (
+        process.argv[6] === 'with-mailer' ||
+        process.argv[3] === 'with-mailer'
+      ) {
         sendEmail(
           user.email,
           'Happy Birthday',
