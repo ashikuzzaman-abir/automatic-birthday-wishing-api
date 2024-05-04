@@ -34,8 +34,7 @@ This assessment is designed to assess your skills in building a RESTful API, int
 
 ### Seeding 5 customers with today as date of birth
 
-* Run `npm run seed:customers` script in the command line before starting the server it will automatically seed 5 customers with today's date of birth.
-* Then start the server.
+* Run `npm run seed:customers` script in the command line before starting the server it will automatically seed 5 customers with today's date of birth **or** hit a `GET` request to the api's `/customer/seed` to seed 5 customers with today's date of birth
 
 ## Start Test Procedures
 

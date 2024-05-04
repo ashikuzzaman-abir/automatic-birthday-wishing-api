@@ -15,5 +15,9 @@ Content-Type: application/json
 
 GET http://localhost:5000/customer
 
+
+### SEED CUSTOMERS
+GET http://localhost:5000/customer/seed
+
 ###
 DELETE http://localhost:5000/customer/66350262fb935cd626c9dfcb
