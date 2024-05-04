@@ -25,9 +25,10 @@ This assessment is designed to assess your skills in building a RESTful API, int
 2. Run the following command to install packages in terminal `npm i`
 3. import the `.env` file that has been provided through email
 4. To **start the development** server run this command in terminal `npm run dev`
-5. To **build** the project run this command in terminal `npm run build`
+5. To start the development server with SMTP settings run this command in terminal `npm run dev:smtp`
 6. To **start the production** server run this command in terminal `npm run start`
-7. Server will start on [localhost:5000](http://localhost:5000/)
+7. To **start the production** server with SMTP settings run this command in terminal `npm run start:smtp`
+8. Server will start on [localhost:5000](http://localhost:5000/)
 
 ## Start Test Procedures
 
