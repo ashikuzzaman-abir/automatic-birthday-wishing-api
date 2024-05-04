@@ -23,12 +23,19 @@ This assessment is designed to assess your skills in building a RESTful API, int
 
 1. Go to the project's directory
 2. Run the following command to install packages in terminal `npm i`
-3. import the `.env` file that has been provided through email
-4. To **start the development** server run this command in terminal `npm run dev`
-5. To start the development server with SMTP settings run this command in terminal `npm run dev:smtp`
-6. To **start the production** server run this command in terminal `npm run start`
-7. To **start the production** server with SMTP settings run this command in terminal `npm run start:smtp`
-8. Server will start on [localhost:5000](http://localhost:5000/)
+3. Create `.env` file into the root of the directory
+4. Include the environment variable into the `.env` file that has been provided through email
+5. Include SMTP mail server's credentials into the `.env` file
+6. To **start the development** server run this command in terminal `npm run dev`
+7. To start the development server with SMTP settings run this command in terminal `npm run dev:smtp`
+8. To **start the production** server run this command in terminal `npm run start`
+9. To **start the production** server with SMTP settings run this command in terminal `npm run start:smtp`
+10. Server will start on [localhost:5000](http://localhost:5000)
+
+### Seeding 5 customers with today as date of birth
+
+* Run `npm run seed:customers` script in the command line before starting the server it will automatically seed 5 customers with today's date of birth.
+* Then start the server.
 
 ## Start Test Procedures
 
