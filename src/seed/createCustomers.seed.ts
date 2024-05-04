@@ -30,3 +30,4 @@ const createCustomers = async () => {
 };
 
 createCustomers();
+process.exit();
