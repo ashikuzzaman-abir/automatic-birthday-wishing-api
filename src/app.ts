@@ -37,7 +37,7 @@ app.get('/', (req, res) => {
 });
 
 // routes
-app.use('/api/users', userRoutes);
+app.use('/customer', userRoutes);
 
 app.listen(PORT, () => {
   console.log(

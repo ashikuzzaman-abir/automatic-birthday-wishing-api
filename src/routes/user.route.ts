@@ -5,7 +5,7 @@ import deleteUser from '../controllers/user/deleteUser.controller';
 
 const router = express.Router();
 
-router.post('/', createAUser);
+router.post('/register', createAUser);
 router.get('/', getAllUsers);
 router.delete('/:id', deleteUser);
 

@@ -1,19 +1,19 @@
 GET http://localhost:5000/
 
 ###
-POST http://localhost:5000/api/users
+POST http://localhost:5000/customer/register
 Content-Type: application/json
 
 {
-    "name": "Ashik Abir",
-    "email": "ashikabir.thinkcrypt@gmail.com",
+    "name": "Ashikuzzaman Abir",
+    "email": "asrabirphone1@gmail.com",
     "password": "11223344",
-    "dateOfBirth": "2024-4-28"
+    "dateOfBirth": "1999-5-4"
 }
 
 ###
 
-GET http://localhost:5000/api/users
+GET http://localhost:5000/customer
 
 ###
-DELETE http://localhost:5000/api/users/662dca550d97c9d2d3b5c8f2
+DELETE http://localhost:5000/customer/66350262fb935cd626c9dfcb
