@@ -1,3 +1,4 @@
+import moment from 'moment';
 export const JWT_PRIVATE_KEY = process.env.JWT_PRIVATE_KEY;
 export const ENV = process.env.ENVIRONMENT || 'development';
 export const PORT = process.env.PORT || 5000;
@@ -12,6 +13,9 @@ export const SCHEDULER_OPTIONS = {
   // timezone: 'Asia/Dhaka',
 };
 
+const hour = moment().hour();
+const minute = Number(moment().minute()) + 1;
 export const AT_MIDNIGHT = '0 0 0 * * *';
 export const IN_EVERY_SECONDS = '*/10 * * * * *';
-export const SELECTED_TIMER = AT_MIDNIGHT; // '48 21 * * *';
+export const SELECTED_TIMER = `${minute} ${hour} * * * `;
+

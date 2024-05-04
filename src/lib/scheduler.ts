@@ -3,10 +3,11 @@ import User from '../models/user.model';
 import mimicMailer from './mimicMailer';
 import sendEmail from './mailer';
 import generateMainBody from './generateMailBody';
+import generateMimicMainBody from './generateMimicMailBody';
 
 export const sendBirthdayMessage = async () => {
   try {
-    const today = moment().startOf('day');
+    const today = moment();
     const users = await User.find().select('-password');
     const usersWhoHasBirthdayToday = users.filter((user) => {
       const dob = moment(user.dateOfBirth);
@@ -17,7 +18,7 @@ export const sendBirthdayMessage = async () => {
       mimicMailer(
         user.email,
         'Happy Birthday',
-        generateMainBody(user.name, user.dateOfBirth)
+        generateMimicMainBody(user.name, user.dateOfBirth)
       );
       if (
         process.argv[6] === 'with-mailer' ||
